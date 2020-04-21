@@ -1,0 +1,25 @@
+@startuml Ejerc2
+skinparam packageStyle rectangle
+actor Alumno
+actor Profesor
+rectangle AulaVirtual{
+    Alumno -- (curso) : matriculado
+    (curso) ..> (Modulos) : include
+    (curso) <.. (Tareas) : extends
+    (curso) <.. (Foros) : extends
+    (curso) <.. (Recursos) : extends
+    (curso) <.. (Cuestionarios) : extends
+    Profesor -- (gestion de grupo) : realiza
+    Profesor -- (gestion de calificaciones) : realiza
+    (Tareas) <. (gestion de calificaciones) : include
+    (Cuestionarios) <. (gestion de calificaciones) : include
+    (modificar grupos) ..> (gestion de grupo) : include
+    (gestion de grupo) <.. (creacion grupo) : extends
+    (gestion de grupo) <.. (modificar alumno) : extends
+    (gestion de grupo) <.. (añadir alumno) : extends
+    (gestion de grupo) <.. (eliminar alumno) : extends
+    (Modulos) <. (gestion de calificaciones) : include
+    (Modulos) <.. (creacion de modulos) : extends
+
+}
+@enduml
